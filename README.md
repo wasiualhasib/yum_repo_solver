@@ -19,3 +19,27 @@ yum clean all
 ```
 yum update -y
 ```
+# CentOS 8: Failed to install perl-IPC-Run package for postgres devel
+
+```
+[root@osboxes yum.repos.d]# dnf install perl-IPC-Run -y
+Last metadata expiration check: 0:06:17 ago on Thu 20 Mar 2025 04:41:51 PM EDT.
+No match for argument: perl-IPC-Run
+Error: Unable to find a match: perl-IPC-Run
+```
+1️⃣ Enable EPEL and PowerTools Repositories
+Try enabling the required repositories first:
+
+
+```
+dnf install epel-release -y
+dnf config-manager --set-enabled crb
+dnf install perl-IPC-Run -y
+```
+
+2️⃣ Check for Available Packages
+If the above fails, check if the package exists in your repositories:
+```
+dnf list available | grep perl-IPC-Run
+```
+
